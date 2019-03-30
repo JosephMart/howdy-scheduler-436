@@ -5,25 +5,25 @@ import withRoot from "../withRoot";
 import { default as tamPrimaryMarkBWhite } from "../assets/images/TAM-PrimaryMarkB-white.svg";
 
 const styles = theme => ({
-	footer: {
+  footer: {
     backgroundColor: theme.palette.secondary.dark,
-		diplay: "flex",
-		justifyContent: "space-around",
-		paddingTop: 15,
-		paddingBottom: 15,
-	},
+    diplay: "flex",
+    justifyContent: "space-around",
+    paddingTop: 15,
+    paddingBottom: 15
+  }
 });
 
 const Footer = ({ classes }) => {
-	return (
-		<div className={classes.footer}>
-			<img src={tamPrimaryMarkBWhite} alt="TAMU" />
-		</div>
-	);
-}
+  return (
+    <div className={classes.footer}>
+      <img src={tamPrimaryMarkBWhite} alt="TAMU" />
+    </div>
+  );
+};
 
 Footer.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withRoot(withStyles(styles)(Footer));
