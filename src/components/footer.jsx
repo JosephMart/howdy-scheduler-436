@@ -9,10 +9,10 @@ const styles = theme => ({
     backgroundColor: theme.palette.secondary.dark,
     diplay: "flex",
     justifyContent: "space-around",
-    paddingTop: theme.spacing.unit * 4,
-    paddingBottom: theme.spacing.unit * 4,
+    paddingTop: theme.spacing.unit * 2.5,
+    paddingBottom: theme.spacing.unit * 2.5,
     paddingLeft: theme.spacing.sideGutter,
-    paddingRight: theme.spacing.sideGutter,
+    paddingRight: theme.spacing.sideGutter
   }
 });
 

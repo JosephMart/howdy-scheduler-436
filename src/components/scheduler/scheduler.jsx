@@ -5,7 +5,6 @@ import withRoot from '../../withRoot'
 import { withStyles } from '@material-ui/core'
 import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
-import LabelScrollCol from './labelscrollcol'
 
 const styles = theme => ({
   root: {
@@ -21,19 +20,19 @@ const styles = theme => ({
   },
   paper: {
     height: 140,
-    width: '25vw',
+    width: '100%',
   },
   scrollCol: {
     height: 140,
-    width: '20vw',
+    width: '100%',
   },
   details: {
     height: 140,
-    width: '60vw',
+    width: '100%',
   },
   schedule: {
     height: 140 * 2,
-    width: '25vw',
+    width: '100%',
   },
 })
 
@@ -43,30 +42,30 @@ function Scheduler ({ classes }) {
       <Paper className={classes.root} elevation={24} style={{paddingLeft: 0, paddingRight: 0}}>
         <Grid container spacing={0}>
           {/*  All scroll cols and details */}
-          <Grid container item xl={6} spacing={0}>
+          <Grid container item md={8} spacing={0}>
             {/* Scroll cols*/}
-            <Grid container item xl={12} spacing={0}>
+            <Grid container item md={12} spacing={0}>
               {/*  Department */}
-              <Grid item xl={4}>
-                <LabelScrollCol />
+              <Grid item md={4}>
+                <Paper className={classes.scrollCol} />
               </Grid>
               {/*  Course */}
-              <Grid item xl={4}>
-                <LabelScrollCol />
+              <Grid item md={4}>
+                <Paper className={classes.scrollCol} />
               </Grid>
               {/*  Section*/}
-              <Grid item xl={4}>
-                <LabelScrollCol />
+              <Grid item md={4}>
+                <Paper className={classes.scrollCol} />
               </Grid>
             </Grid>
             {/* Details */}
-            <Grid item xl={12}>
+            <Grid item md={12}>
               <Paper className={classes.details} />
             </Grid>
           </Grid>
           {/*  Schedule */}
-          <Grid container item xl={4}>
-            <Grid item xl={12}>
+          <Grid container item md={4}>
+            <Grid item md={12}>
               <Paper className={classes.schedule} />
             </Grid>
           </Grid>

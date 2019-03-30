@@ -26,21 +26,22 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-around"
+  },
+  test: {
+    color: theme.palette.primary.contrastText
   }
 });
 
 const Header = ({ classes }) => {
-  console.log(classes);
-
   return (
     <div className={classes.header}>
       <div className={classes.logoContainer}>
         <img src={tamLogoBox} alt="TAMU" />
         <div className={classes.logoText}>
-          <Typography align="left" variant="headline">
+          <Typography align="left" variant="h5" color="inherit">
             Texas A&M University
           </Typography>
-          <Typography align="left" variant="subheading">
+          <Typography align="left" variant="subtitle1">
             Registration
           </Typography>
         </div>
