@@ -177,7 +177,8 @@ const theme = {
   },
   props: {},
   spacing: {
-    unit: 8
+    unit: 8,
+    sideGutter: 8 * 20
   },
   palette: {
     tonalOffset: 0.2,

@@ -1,76 +1,42 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogActions from "@material-ui/core/DialogActions";
-import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core/styles";
-import withRoot from "../withRoot";
+import React from 'react'
+import PropTypes from 'prop-types'
+import Typography from '@material-ui/core/Typography'
+import { withStyles } from '@material-ui/core/styles'
+import withRoot from '../withRoot'
 import Scheduler from '../components/scheduler'
-import Header from "../components/header";
-import Footer from "../components/footer";
+import Header from '../components/header'
+import Footer from '../components/footer'
 
 const styles = theme => ({
   root: {
+
+  },
+  main: {
+    maxWidth: 2000,
+    paddingTop: theme.spacing.unit * 4,
+    paddingBottom: theme.spacing.unit * 4,
+    paddingLeft: theme.spacing.sideGutter,
+    paddingRight: theme.spacing.sideGutter,
+    margin: 'auto',
   }
 });
 
-class Index extends React.Component {
-  state = {
-    open: false
-  };
-
-  handleClose = () => {
-    this.setState({
-      open: false
-    });
-  };
-
-  handleClick = () => {
-    this.setState({
-      open: true
-    });
-  };
-
-  render() {
-    const { classes } = this.props;
-    const { open } = this.state;
-
-    return (
-      <div className={classes.root}>
-        <Header />
-        <Dialog open={open} onClose={this.handleClose}>
-          <DialogTitle>Super Secret Password</DialogTitle>
-          <DialogContent>
-            <DialogContentText>1-2-3-4-5</DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button color="primary" onClick={this.handleClose}>
-              OK
-            </Button>
-          </DialogActions>
-        </Dialog>
+function Index ({ classes }) {
+  return (
+    <div className={classes.root}>
+      <Header/>
+      <main className={classes.main}>
         <Typography variant="h4" gutterBottom>
           Scheduling A Major
         </Typography>
         <Typography variant="subtitle1" gutterBottom>
           start of something great
         </Typography>
-        <Button
-          variant="contained"
-          color="secondary"
-          onClick={this.handleClick}
-        >
-          Super Secret Password
-        </Button>
-        <Scheduler />
-        <Footer />
-      </div>
-    );
-  }
+        <Scheduler/>
+      </main>
+      <Footer/>
+    </div>
+  )
 }
 
 Index.propTypes = {

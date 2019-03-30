@@ -10,8 +10,12 @@ import withRoot from "../withRoot";
 
 const styles = theme => ({
   header: {
+    paddingTop: theme.spacing.unit * 4,
+    paddingBottom: theme.spacing.unit * 4,
+    paddingLeft: theme.spacing.sideGutter,
+    paddingRight: theme.spacing.sideGutter,
     display: "flex",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
     alignItems: "center"
   },
   logoContainer: {
