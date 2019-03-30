@@ -9,11 +9,10 @@ import DialogActions from "@material-ui/core/DialogActions";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import withRoot from "../withRoot";
+import Scheduler from '../components/scheduler'
 
 const styles = theme => ({
   root: {
-    textAlign: "center",
-    paddingTop: theme.spacing.unit * 20
   }
 });
 
@@ -64,6 +63,7 @@ class Index extends React.Component {
         >
           Super Secret Password
         </Button>
+        <Scheduler />
       </div>
     );
   }
