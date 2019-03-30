@@ -12,6 +12,7 @@ import withRoot from "../withRoot";
 import Scheduler from '../components/scheduler'
 import Header from "../components/header";
 import Footer from "../components/footer";
+import NavBar from "../components/navbar";
 
 const styles = theme => ({
   root: {
@@ -42,6 +43,7 @@ class Index extends React.Component {
     return (
       <div className={classes.root}>
         <Header />
+        <NavBar />
         <Dialog open={open} onClose={this.handleClose}>
           <DialogTitle>Super Secret Password</DialogTitle>
           <DialogContent>
