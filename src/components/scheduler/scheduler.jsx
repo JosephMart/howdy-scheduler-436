@@ -5,6 +5,9 @@ import withRoot from '../../withRoot'
 import { withStyles } from '@material-ui/core'
 import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
+import LabelScrollCol from './labelscrollcol'
+import Details from './details'
+import Schedule from './schedule'
 
 const styles = theme => ({
   root: {
@@ -47,26 +50,26 @@ function Scheduler ({ classes }) {
             <Grid container item md={12} spacing={0}>
               {/*  Department */}
               <Grid item md={4}>
-                <Paper className={classes.scrollCol} />
+                <LabelScrollCol title='Department'/>
               </Grid>
               {/*  Course */}
               <Grid item md={4}>
-                <Paper className={classes.scrollCol} />
+                <LabelScrollCol title='Course'/>
               </Grid>
-              {/*  Section*/}
+              {/*  Section */}
               <Grid item md={4}>
-                <Paper className={classes.scrollCol} />
+                <LabelScrollCol title='Section'/>
               </Grid>
             </Grid>
             {/* Details */}
             <Grid item md={12}>
-              <Paper className={classes.details} />
+              <Details/>
             </Grid>
           </Grid>
           {/*  Schedule */}
           <Grid container item md={4}>
             <Grid item md={12}>
-              <Paper className={classes.schedule} />
+              <Schedule/>
             </Grid>
           </Grid>
         </Grid>
