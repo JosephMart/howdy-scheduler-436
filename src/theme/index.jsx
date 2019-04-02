@@ -86,11 +86,14 @@ const theme = {
       fontWeight: 400
     },
     fontWeightLight: 300,
+    h1: {
+      fontSize: "3.5rem"
+    },
     h2: {
       fontSize: "2.5rem"
     },
-    h1: {
-      fontSize: "3.5rem"
+    h5: {
+      fontSize: "1.0rem"
     },
     display3: {
       marginLeft: "-.02em",

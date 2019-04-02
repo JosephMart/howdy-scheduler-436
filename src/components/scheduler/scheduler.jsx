@@ -8,6 +8,7 @@ import Grid from '@material-ui/core/Grid'
 import LabelScrollCol from './labelscrollcol'
 import Details from './details'
 import Schedule from './schedule'
+import PinnedSubheaderList from '../scrolllist'
 
 const styles = theme => ({
   root: {
@@ -50,15 +51,21 @@ function Scheduler ({ classes }) {
             <Grid container item md={12} spacing={0}>
               {/*  Department */}
               <Grid item md={4}>
-                <LabelScrollCol title='Department'/>
+                <LabelScrollCol title='Department'>
+                  <PinnedSubheaderList />
+                </LabelScrollCol>
               </Grid>
               {/*  Course */}
               <Grid item md={4}>
-                <LabelScrollCol title='Course'/>
+                <LabelScrollCol title='Course'>
+                  <PinnedSubheaderList />
+                </LabelScrollCol>
               </Grid>
               {/*  Section */}
               <Grid item md={4}>
-                <LabelScrollCol title='Section'/>
+                <LabelScrollCol title='Section'>
+                  <PinnedSubheaderList />
+                </LabelScrollCol>
               </Grid>
             </Grid>
             {/* Details */}

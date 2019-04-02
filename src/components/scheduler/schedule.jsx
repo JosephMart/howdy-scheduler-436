@@ -1,7 +1,8 @@
 import React from 'react'
-import { Typography, withStyles } from '@material-ui/core'
+import { withStyles } from '@material-ui/core'
 import Bar from './bar'
 import Paper from '@material-ui/core/Paper'
+import SimpleTabs from '../simpletab'
 
 const styles = theme => ({
   root: {
@@ -11,13 +12,16 @@ const styles = theme => ({
 })
 
 function Schedule ({ classes }) {
+  const schedules = [
+    {label: 'Schedule 1', content: 'Schedule 1'},
+    {label: 'Schedule 2', content: 'Schedule 2'}
+  ]
   return (
     <Paper className={classes.root} elevation={1} square>
       <Bar>
-        <Typography>
-          Schedule
-        </Typography>
+        Schedule
       </Bar>
+      <SimpleTabs tabs={schedules} scrollable flipped />
     </Paper>
   )
 }
