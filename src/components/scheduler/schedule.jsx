@@ -6,7 +6,7 @@ import SimpleTabs from '../simpletab'
 
 const styles = theme => ({
   root: {
-    height: 600,
+    height: "100%",
     minWidth: '100%'
   }
 })
