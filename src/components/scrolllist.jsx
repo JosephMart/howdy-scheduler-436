@@ -1,10 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListSubheader from '@material-ui/core/ListSubheader';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { withStyles } from '@material-ui/core/styles'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemText from '@material-ui/core/ListItemText'
 
 const styles = theme => ({
   root: {
@@ -22,31 +21,25 @@ const styles = theme => ({
     backgroundColor: 'inherit',
     padding: 0,
   },
-});
+})
 
-function PinnedSubheaderList(props) {
-  const { classes } = props;
-
+function PinnedSubheaderList ({ classes, data, onSelect, selected }) {
   return (
-    <List className={classes.root} subheader={<li />}>
-      {[0, 1, 2, 3, 4].map(sectionId => (
-        <li key={`section-${sectionId}`} className={classes.listSection}>
-          <ul className={classes.ul}>
-            <ListSubheader>{`COLLEGE ${sectionId}`}</ListSubheader>
-            {[0, 1, 2].map(item => (
-              <ListItem key={`item-${sectionId}-${item}`}>
-                <ListItemText primary={`Course ${item}`} />
-              </ListItem>
-            ))}
-          </ul>
-        </li>
+    <List component="nav" className={classes.root}>
+      {data.map((d, i) => (
+        <ListItem key={d} button divider alignItems='flex-start' onClick={e => onSelect(d, i)}
+                  selected={d === selected}>
+          <ListItemText primary={d}/>
+        </ListItem>
       ))}
     </List>
-  );
+  )
 }
 
 PinnedSubheaderList.propTypes = {
   classes: PropTypes.object.isRequired,
-};
+  data: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onSelect: PropTypes.func.isRequired
+}
 
-export default withStyles(styles)(PinnedSubheaderList);
+export default withStyles(styles)(PinnedSubheaderList)

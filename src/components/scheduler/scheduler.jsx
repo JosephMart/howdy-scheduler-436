@@ -20,51 +20,55 @@ const styles = theme => ({
     // paddingBottom: theme.spacing.unit * 2,
   },
   grid: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   paper: {
     height: 140,
-    width: '100%',
+    width: '100%'
   },
   scrollCol: {
     height: 140,
-    width: '100%',
+    width: '100%'
   },
   details: {
     height: 140,
-    width: '100%',
+    width: '100%'
   },
   schedule: {
     height: 140 * 2,
-    width: '100%',
-  },
+    width: '100%'
+  }
 })
 
-function Scheduler ({ classes }) {
+function Scheduler ({ classes, departments, onDepartmentSelect, selectedDepartment, courses, onCourseSelect, selectedCourse, sections, selectedSection, onSectionSelect }) {
   return (
     <div>
-      <Paper className={classes.root} elevation={24} style={{paddingLeft: 0, paddingRight: 0}}>
+      <Paper
+        className={classes.root}
+        elevation={24}
+        style={{ paddingLeft: 0, paddingRight: 0 }}
+      >
         <Grid container spacing={0}>
           {/*  All scroll cols and details */}
-          <Grid container item md={8} spacing={0}>
+          <Grid container item md={5} spacing={0}>
             {/* Scroll cols*/}
             <Grid container item md={12} spacing={0}>
               {/*  Department */}
               <Grid item md={4}>
-                <LabelScrollCol title='Department'>
-                  <PinnedSubheaderList />
+                <LabelScrollCol title="Department">
+                  <PinnedSubheaderList data={departments} onSelect={onDepartmentSelect} selected={selectedDepartment}/>
                 </LabelScrollCol>
               </Grid>
               {/*  Course */}
               <Grid item md={4}>
-                <LabelScrollCol title='Course'>
-                  <PinnedSubheaderList />
+                <LabelScrollCol title="Course">
+                  <PinnedSubheaderList data={courses} onSelect={onCourseSelect} selected={selectedCourse.name}/>
                 </LabelScrollCol>
               </Grid>
               {/*  Section */}
               <Grid item md={4}>
-                <LabelScrollCol title='Section'>
-                  <PinnedSubheaderList />
+                <LabelScrollCol title="Section">
+                  <PinnedSubheaderList data={sections} onSelect={onSectionSelect} selected={selectedSection}/>
                 </LabelScrollCol>
               </Grid>
             </Grid>
@@ -74,7 +78,7 @@ function Scheduler ({ classes }) {
             </Grid>
           </Grid>
           {/*  Schedule */}
-          <Grid container item md={4}>
+          <Grid container item md={7}>
             <Grid item md={12}>
               <Schedule/>
             </Grid>
@@ -87,6 +91,8 @@ function Scheduler ({ classes }) {
 
 Scheduler.propTypes = {
   classes: PropTypes.object.isRequired,
+  departments: PropTypes.arrayOf(PropTypes.string).isRequired,
+  courses: PropTypes.arrayOf(PropTypes.string).isRequired
 }
 
 export default withRoot(withStyles(styles)(Scheduler))
