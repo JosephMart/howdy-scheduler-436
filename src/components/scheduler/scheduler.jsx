@@ -40,7 +40,7 @@ const styles = theme => ({
   }
 })
 
-function Scheduler ({ classes, departments, onDepartmentSelect, selectedDepartment, courses, onCourseSelect, selectedCourse, sections, selectedSection, onSectionSelect }) {
+function Scheduler ({ classes, departments, onDepartmentSelect, selectedDepartment, courses, onCourseSelect, selectedCourse, sections, selectedSection, onSectionSelect, departmentsLoading, coursesLoading, sectionsLoading }) {
   return (
     <div>
       <Paper
@@ -56,19 +56,19 @@ function Scheduler ({ classes, departments, onDepartmentSelect, selectedDepartme
               {/*  Department */}
               <Grid item md={4}>
                 <LabelScrollCol title="Department">
-                  <PinnedSubheaderList data={departments} onSelect={onDepartmentSelect} selected={selectedDepartment}/>
+                  <PinnedSubheaderList data={departments} onSelect={onDepartmentSelect} selected={selectedDepartment} loading={departmentsLoading}/>
                 </LabelScrollCol>
               </Grid>
               {/*  Course */}
               <Grid item md={4}>
                 <LabelScrollCol title="Course">
-                  <PinnedSubheaderList data={courses} onSelect={onCourseSelect} selected={selectedCourse.name}/>
+                  <PinnedSubheaderList data={courses} onSelect={onCourseSelect} selected={selectedCourse.name} loading={coursesLoading}/>
                 </LabelScrollCol>
               </Grid>
               {/*  Section */}
               <Grid item md={4}>
                 <LabelScrollCol title="Section">
-                  <PinnedSubheaderList data={sections} onSelect={onSectionSelect} selected={selectedSection}/>
+                  <PinnedSubheaderList data={sections} onSelect={onSectionSelect} selected={selectedSection} loading={sectionsLoading}/>
                 </LabelScrollCol>
               </Grid>
             </Grid>
