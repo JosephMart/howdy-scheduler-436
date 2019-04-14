@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import * as PropTypes from 'prop-types'
 
 import withRoot from '../../withRoot'
 import { withStyles } from '@material-ui/core'
@@ -23,24 +23,24 @@ const styles = theme => ({
     flexGrow: 1
   },
   paper: {
-    height: 140,
+    height: '100%',
     width: '100%'
   },
   scrollCol: {
-    height: 140,
+    height: '100%',
     width: '100%'
   },
   details: {
-    height: 140,
+    height: '100%',
     width: '100%'
   },
   schedule: {
-    height: 140 * 2,
+    height: '100%',
     width: '100%'
   }
 })
 
-function Scheduler ({ classes, departments, onDepartmentSelect, selectedDepartment, courses, onCourseSelect, selectedCourse, sections, selectedSection, onSectionSelect, departmentsLoading, coursesLoading, sectionsLoading }) {
+function Scheduler ({ classes, departments, onDepartmentSelect, selectedDepartment, courses, onCourseSelect, selectedCourse, sections, selectedSection, onSectionSelect, departmentsLoading, coursesLoading, sectionsLoading, professor }) {
   return (
     <div>
       <Paper
@@ -68,13 +68,15 @@ function Scheduler ({ classes, departments, onDepartmentSelect, selectedDepartme
               {/*  Section */}
               <Grid item md={4}>
                 <LabelScrollCol title="Section">
-                  <PinnedSubheaderList data={sections} onSelect={onSectionSelect} selected={selectedSection} loading={sectionsLoading}/>
+                  <PinnedSubheaderList data={sections} onSelect={onSectionSelect} selected={`${selectedSection.name}-${
+                    selectedSection.section
+                    }-${selectedSection.instructor}`} loading={sectionsLoading} addable/>
                 </LabelScrollCol>
               </Grid>
             </Grid>
             {/* Details */}
             <Grid item md={12}>
-              <Details/>
+              <Details course={selectedCourse} section={selectedSection} professor={professor} />
             </Grid>
           </Grid>
           {/*  Schedule */}

@@ -33,6 +33,7 @@ const styles = theme => ({
 
 function Index({ classes }) {
   // State
+  // const [schedules, updateSchedules] = useState([]);
   const [selectedDepartment, updateDepartment] = useState("");
   const [selectedCourse, updateCourse] = useState({});
   const [selectedSection, updateSection] = useState({});
@@ -41,6 +42,7 @@ function Index({ classes }) {
   // Fetch data
   const departments = useDataApi("/course/departments", []);
   const courses = useDataApi(null, []);
+  const professor = useDataApi(null, {});
 
   // Handle changes
   // Select the first department in list after data fetch of departments
@@ -79,6 +81,12 @@ function Index({ classes }) {
     }
   }, [selectedCourse]);
 
+  useEffect(() => {
+    if (selectedSection.instructorId) {
+      professor.doFetch(`/instructor/${selectedSection.instructorId}`);
+    }
+  }, [selectedSection]);
+
   // Handlers
   const onCourseSelect = (_, i) => {
     updateCourse(courses.data[i]);
@@ -111,19 +119,18 @@ function Index({ classes }) {
             sections={Object.values(sections).map(
               s => `${s.name}-${s.section}-${s.instructor}`
             )}
-            selectedSection={`${selectedSection.name}-${
-              selectedSection.section
-            }-${selectedSection.instructor}`}
+            selectedSection={selectedSection}
             onSectionSelect={onSectionSelect}
             departmentsLoading={
               departments.isLoading || departments.data.length === 0
             }
-            coursesLoading={
-              courses.isLoading || courses.data.length === 0
-            }
+            coursesLoading={courses.isLoading || courses.data.length === 0}
             sectionsLoading={
-              courses.isLoading || courses.data.length === 0 || Object.keys(sections).length === 0
+              courses.isLoading ||
+              courses.data.length === 0 ||
+              Object.keys(sections).length === 0
             }
+            professor={professor.data}
           />
         </main>
       </div>
