@@ -1,8 +1,5 @@
 import React from 'react'
 import { withStyles } from '@material-ui/core'
-import Bar from './bar'
-import Paper from '@material-ui/core/Paper'
-import Grid from '@material-ui/core/Grid';
 import { ViewState } from "@devexpress/dx-react-scheduler";
 import {
   Scheduler,

@@ -51,17 +51,17 @@ const ProfessorInfo = ({prof, classes}) => {
 		prof !== undefined
 		? (
 			<div className={classes.root}>
-				<Avatar className={classes.professorImage} alt={prof.name} src={prof.image} />
+				<Avatar className={classes.professorImage} alt={prof.name} src={prof.image}/>
 				<div className={classes.info}>
 					<div className={classes.nameTitleContainer}>
 						<div className={classes.name}>{prof.name}</div>
 						<div className={classes.title}>{prof.title}</div>
 					</div>
 					<div className={classes.contactInfoContainer}>
-						<div className={classes.contactInfo}>{`Office: ${prof.office}`}</div>
-						<div className={classes.contactInfo}>{`Email: ${prof.email}`}</div>
-						<div className={classes.contactInfo}>{`Phone: ${prof.phoneNumber}`}</div>
-						<div className={classes.contactInfo}>Website: <a href={prof.website}>Personal Website</a></div>
+						<div className={classes.contactInfo}>{`Office: ${prof.office || "HRBB 111"}`}</div>
+						<div className={classes.contactInfo}>{`Email: ${prof.email || "first.last@tamu.edu"}`}</div>
+						<div className={classes.contactInfo}>{`Phone: ${prof.phoneNumber || "123-345-6789"}`}</div>
+						<div className={classes.contactInfo}><a href={prof.website || "https://google.com"}>Personal Website</a></div>
 					</div>
 				</div>
 			</div>

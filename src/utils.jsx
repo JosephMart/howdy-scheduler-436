@@ -1,6 +1,18 @@
 import { useEffect, useReducer, useState } from 'react'
 import * as axios from 'axios'
 
+export const numberToTimeAsString = (num) => {
+  const hour = Math.floor(num);
+  const min = Math.floor((num - hour) * 60);
+  const minStr = `${min}`.padStart(2, "0");
+
+  if (hour > 12) {
+    return `${hour - 12}:${minStr} PM`;
+  }
+
+  return `${hour}:${minStr} AM`;
+}
+
 const dataFetchReducer = (state, action) => {
   switch (action.type) {
     case 'FETCH_INIT':
