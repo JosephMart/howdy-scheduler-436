@@ -17,28 +17,34 @@ const History = ({data, loading, classes}) => {
   if (loading) {
     return <Loading extraClasses={classes.loading} />;
   }
+
   if (data === null) {
     return <p>No history found</p>
   }
+
+  console.dir(classes);
+
   return (
-    <XYPlot width={300} height={300}>
+    <XYPlot width={500} height={500}>
       <VerticalGridLines />
       <HorizontalGridLines />
       <XAxis />
-      <YAxis />
+      <YAxis top={4} bottom={0} title="GPA" position="middle" />
       <LineMarkSeries
-        className="linemark-series-example"
-        style={{
-          strokeWidth: '3px'
-        }}
-        // lineStyle={{stroke: 'red'}}
-        // markStyle={{stroke: 'blue'}}
-        data={[{x: 1, y: 10}, {x: 2, y: 5}, {x: 3, y: 15}]}
-      />
-      <LineMarkSeries
-        className="linemark-series-example-2"
-        curve={'curveMonotoneX'}
-        data={[{x: 1, y: 11}, {x: 1.5, y: 29}, {x: 3, y: 7}]}
+        className="linemark-series"
+        data={[
+          {
+            x: 1,
+            y: 4
+          },
+          {
+            x: 3,
+            y: 2
+          }
+        ]}
+        opacity={1}
+        strokeStyle="solid"
+        style={{}}
       />
     </XYPlot>
   );
