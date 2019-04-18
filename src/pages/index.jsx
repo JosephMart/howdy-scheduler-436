@@ -88,6 +88,10 @@ function Index({ classes }) {
     }
   }, [selectedSection]);
 
+  useEffect(() => {
+    updateScheduleIndex(schedules.length - 1);
+  }, [schedules.length]);
+
   // Handlers
   const onCourseSelect = (_, i) => {
     updateCourse(courses.data[i]);
@@ -96,6 +100,7 @@ function Index({ classes }) {
     updateSection(Object.values(selectedCourse.sections)[i]);
   };
 
+  // Add course to current schedule
   const addCourse = sectionsIndex => {
     const section = Object.values(sections)[sectionsIndex];
 
@@ -115,18 +120,24 @@ function Index({ classes }) {
       }
     }
     updateSchedules([
-      ...schedules.slice(0, currentScheduleIndex - 1),
+      ...schedules.slice(0, currentScheduleIndex),
       [...schedules[currentScheduleIndex], ...data],
       ...schedules.slice(currentScheduleIndex + 1),
     ]);
   };
-  
+
+  // Remove course from current schedule
   const removeCourse = id => {
     updateSchedules([
-      ...schedules.slice(0, currentScheduleIndex - 1),
+      ...schedules.slice(0, currentScheduleIndex),
       schedules[currentScheduleIndex].filter(s => s.id !== id),
       ...schedules.slice(currentScheduleIndex + 1),
     ]);
+  };
+
+  // Add new blank schedule and set it active
+  const addSchedule = () => {
+    updateSchedules([...schedules, []]);
   };
 
   // console.dir({
@@ -134,6 +145,7 @@ function Index({ classes }) {
   //   COURSE: selectedCourse,
   //   SECTION: selectedSection
   // });
+  console.log(schedules, currentScheduleIndex);
   return (
     <div className={classes.root}>
       <div className={classes.nonFooter}>
@@ -170,6 +182,8 @@ function Index({ classes }) {
             currentScheduleIndex={currentScheduleIndex}
             addCourse={addCourse}
             removeCourse={removeCourse}
+            addSchedule={addSchedule}
+            updateScheduleIndex={updateScheduleIndex}
           />
         </main>
       </div>

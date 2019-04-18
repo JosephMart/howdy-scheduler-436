@@ -6,7 +6,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 
-function TabContainer(props) {
+export function TabContainer(props) {
   return (
     <Typography component="div" style={{ padding: 8 * 3 }}>
       {props.children}
@@ -31,7 +31,13 @@ class SimpleTabs extends React.Component {
   };
 
   handleChange = (event, value) => {
+    if (this.props.tabs[value].ignored) {
+      return;
+    }
     this.setState({ value });
+    if (this.props.handleChange) {
+      this.props.handleChange(value);
+    }
   };
 
   render() {
@@ -48,8 +54,8 @@ class SimpleTabs extends React.Component {
             scrollButtons="auto"
             indicatorColor="primary"
           >
-            {tabs.map(({ label }) => (
-              <Tab key={label} label={label} />
+            {tabs.map(({ id, label, icon, onClick }) => (
+              <Tab key={id || label} label={label} icon={icon} onClick={onClick} />
             ))}
           </Tabs>
         </AppBar>

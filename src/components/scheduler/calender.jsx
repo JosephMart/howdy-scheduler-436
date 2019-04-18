@@ -14,11 +14,10 @@ const styles = theme => ({
 });
 
 function Calendar ({ classes, data }) {
-  console.log(data);
   return (
     <Scheduler className={classes.scheduler} data={data}>
       <ViewState currentDate="2018-06-28" />
-      <WeekView startDayHour={9} endDayHour={19} />
+      <WeekView startDayHour={8} endDayHour={21} />
       <Appointments />
     </Scheduler>
   )

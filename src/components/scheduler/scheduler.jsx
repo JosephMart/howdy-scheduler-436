@@ -40,7 +40,10 @@ const styles = theme => ({
   }
 })
 
-function Scheduler ({ classes, departments, onDepartmentSelect, selectedDepartment, courses, onCourseSelect, selectedCourse, sections, selectedSection, onSectionSelect, departmentsLoading, coursesLoading, sectionsLoading, professor, professorLoading, currentScheduleIndex, schedules, addCourse, removeCourse }) {
+function Scheduler ({ classes, departments, onDepartmentSelect, selectedDepartment, courses, onCourseSelect, selectedCourse, sections, selectedSection, onSectionSelect, departmentsLoading, coursesLoading, sectionsLoading, professor, professorLoading, currentScheduleIndex, schedules, addCourse, removeCourse, addSchedule, updateScheduleIndex }) {
+  const addedCourses = schedules[currentScheduleIndex].map(s => s.id);
+  console.log(schedules, currentScheduleIndex, addedCourses);
+
   return (
     <div>
       <Paper
@@ -72,7 +75,7 @@ function Scheduler ({ classes, departments, onDepartmentSelect, selectedDepartme
                 <LabelScrollCol title="Section">
                   <PinnedSubheaderList data={sections} onSelect={onSectionSelect} selected={`${selectedSection.name}-${
                     selectedSection.section
-                    }-${selectedSection.instructor}`} loading={sectionsLoading} addable add={addCourse} remove={removeCourse} addedItems={schedules[currentScheduleIndex].map(s => s.id)}/>
+                    }-${selectedSection.instructor}`} loading={sectionsLoading} addable add={addCourse} remove={removeCourse} addedItems={addedCourses}/>
                 </LabelScrollCol>
               </Grid>
             </Grid>
@@ -84,13 +87,14 @@ function Scheduler ({ classes, departments, onDepartmentSelect, selectedDepartme
                 professor={professor}
                 courseLoading={coursesLoading}
                 sectionLoading={sectionsLoading}
-                professorLoading={professorLoading}/>
+                professorLoading={professorLoading}
+              />
             </Grid>
           </Grid>
           {/*  Schedule */}
           <Grid container item md={7}>
             <Grid item md={12}>
-              <Schedule currentScheduleIndex={currentScheduleIndex} schedules={schedules} />
+              <Schedule currentScheduleIndex={currentScheduleIndex} schedules={schedules} addSchedule={addSchedule} updateScheduleIndex={updateScheduleIndex} />
             </Grid>
           </Grid>
         </Grid>
