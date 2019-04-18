@@ -1,4 +1,5 @@
 import { createMuiTheme } from "@material-ui/core/styles";
+import { blue } from "@material-ui/core/colors";
 
 const theme = {
   breakpoints: {
@@ -239,6 +240,20 @@ const theme = {
       active: "rgba(0, 0, 0, 0.54)"
     },
     primary: {
+      "50": "#e3f2fd",
+      "100": "#bbdefb",
+      "200": "#90caf9",
+      "300": "rgba(56, 0, 0, 1)", // the one calendar uses
+      "400": "rgba(56, 0, 0, .8)", // the one calendar uses for on hover
+      "500": "#2196f3",
+      "600": "#1e88e5",
+      "700": "#1976d2",
+      "800": "#1565c0",
+      "900": "#0d47a1",
+      "A100": "#82b1ff",
+      "A200": "#448aff",
+      "A400": "#2979ff",
+      "A700": "#2962ff",
       main: "#500000",
       light: "rgb(115, 51, 51)",
       dark: "rgb(56, 0, 0)",

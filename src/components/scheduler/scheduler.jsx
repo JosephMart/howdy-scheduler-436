@@ -40,7 +40,7 @@ const styles = theme => ({
   }
 })
 
-function Scheduler ({ classes, departments, onDepartmentSelect, selectedDepartment, courses, onCourseSelect, selectedCourse, sections, selectedSection, onSectionSelect, departmentsLoading, coursesLoading, sectionsLoading, professor, professorLoading }) {
+function Scheduler ({ classes, departments, onDepartmentSelect, selectedDepartment, courses, onCourseSelect, selectedCourse, sections, selectedSection, onSectionSelect, departmentsLoading, coursesLoading, sectionsLoading, professor, professorLoading, currentScheduleIndex, schedules }) {
   return (
     <div>
       <Paper
@@ -90,7 +90,7 @@ function Scheduler ({ classes, departments, onDepartmentSelect, selectedDepartme
           {/*  Schedule */}
           <Grid container item md={7}>
             <Grid item md={12}>
-              <Schedule/>
+              <Schedule currentScheduleIndex={currentScheduleIndex} schedules={schedules} />
             </Grid>
           </Grid>
         </Grid>

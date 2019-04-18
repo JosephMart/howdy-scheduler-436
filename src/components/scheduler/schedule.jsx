@@ -12,18 +12,17 @@ const styles = theme => ({
   }
 })
 
-function Schedule ({ classes }) {
-  const schedules = [
-    { label: 'Schedule 1', 
-      content: <Calender/>},
-    {label: 'Schedule 2', content: 'Schedule 2'}
-  ]
+function Schedule ({ classes, currentScheduleIndex, schedules }) {
+  const scheduleTabs = schedules.map((s, i) => ({
+    label: `Schedule ${i+1}`,
+    content: <Calender data={schedules[i]} />
+  }));
   return (
     <Paper className={classes.root} elevation={1} square>
       <Bar>
         Schedule
       </Bar>
-      <SimpleTabs tabs={schedules} scrollable flipped />
+      <SimpleTabs tabs={scheduleTabs} scrollable flipped />
     </Paper>
   )
 }

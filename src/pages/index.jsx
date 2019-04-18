@@ -33,11 +33,12 @@ const styles = theme => ({
 
 function Index({ classes }) {
   // State
-  // const [schedules, updateSchedules] = useState([]);
   const [selectedDepartment, updateDepartment] = useState("");
   const [selectedCourse, updateCourse] = useState({});
   const [selectedSection, updateSection] = useState({});
   const [sections, updateSections] = useState({});
+  const [schedules, updateSchedules] = useState([[]]);
+  const [currentScheduleIndex, updateScheduleIndex] = useState(0);
 
   // Fetch data
   const departments = useDataApi("/course/departments", []);
@@ -95,6 +96,18 @@ function Index({ classes }) {
     updateSection(Object.values(selectedCourse.sections)[i]);
   };
 
+  const addCourse = course => {
+    updateSchedules([
+      schedules.slice(0, currentScheduleIndex - 1),
+      [...schedules[currentScheduleIndex], course],
+      schedules.slice(0, currentScheduleIndex + 1),
+    ]);
+  };
+  
+  const removeCourse = () => {
+
+  };
+
   // console.dir({
   //   DEPARTMENT: selectedDepartment,
   //   COURSE: selectedCourse,
@@ -132,6 +145,10 @@ function Index({ classes }) {
             }
             professor={professor.data}
             professorLoading={professor.isLoading || (Object.keys(professor).length === 0)}
+            schedules={schedules}
+            currentScheduleIndex={currentScheduleIndex}
+            addCourse={addCourse}
+            removeCourse={removeCourse}
           />
         </main>
       </div>
