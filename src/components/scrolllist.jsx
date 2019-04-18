@@ -8,7 +8,7 @@ import Loading from "./loading";
 import InputBase from "@material-ui/core/InputBase";
 import SearchIcon from "@material-ui/icons/Search";
 import Fab from "@material-ui/core/Fab";
-import CheckIcon from "@material-ui/icons/Check";
+import AddIcon from "@material-ui/icons/Add";
 
 const styles = theme => ({
   root: {
@@ -93,11 +93,18 @@ function PinnedSubheaderList({
             alignItems="flex-start"
             onClick={e => onSelect(d, i)}
             selected={d === selected}
+            style={{ display: "flex", alignItems: "center" }}
           >
             <ListItemText primary={d} />
             {addable && (
-              <Fab color="primary" onClick={console.log} size="small">
-                <CheckIcon />
+              <Fab
+                size="small"
+                color="primary"
+                aria-label="Add"
+                onClick={e => console.log(e)}
+                style={{ flexShrink: 0 }}
+              >
+                <AddIcon />
               </Fab>
             )}
           </ListItem>
