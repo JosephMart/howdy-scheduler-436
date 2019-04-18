@@ -4,9 +4,11 @@ import { withStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import Loading from "./loading";
 import InputBase from "@material-ui/core/InputBase";
 import SearchIcon from "@material-ui/icons/Search";
+import RemoveIcon from "@material-ui/icons/Remove";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 
@@ -64,6 +66,8 @@ function PinnedSubheaderList({
     updateSearch(value);
   };
 
+  const [added, updateAdded] = useState(false);
+
   if (loading) {
     return <Loading extraClasses={classes.loading} />;
   }
@@ -97,15 +101,17 @@ function PinnedSubheaderList({
           >
             <ListItemText primary={d} />
             {addable && (
-              <Fab
-                size="small"
-                color="primary"
-                aria-label="Add"
-                onClick={e => console.log(e)}
-                style={{ flexShrink: 0 }}
-              >
-                <AddIcon />
-              </Fab>
+              <ListItemSecondaryAction>
+                <Fab
+                  size="small"
+                  color="primary"
+                  aria-label="Add"
+                  onClick={e => updateAdded(!added)}
+                  style={{ flexShrink: 0 }}
+                >
+                  {added ? <RemoveIcon /> : <AddIcon />}
+                </Fab>
+              </ListItemSecondaryAction>
             )}
           </ListItem>
         ))}
