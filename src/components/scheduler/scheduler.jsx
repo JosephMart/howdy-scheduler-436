@@ -40,7 +40,7 @@ const styles = theme => ({
   }
 })
 
-function Scheduler ({ classes, departments, onDepartmentSelect, selectedDepartment, courses, onCourseSelect, selectedCourse, sections, selectedSection, onSectionSelect, departmentsLoading, coursesLoading, sectionsLoading, professor }) {
+function Scheduler ({ classes, departments, onDepartmentSelect, selectedDepartment, courses, onCourseSelect, selectedCourse, sections, selectedSection, onSectionSelect, departmentsLoading, coursesLoading, sectionsLoading, professor, professorLoading }) {
   return (
     <div>
       <Paper
@@ -56,13 +56,15 @@ function Scheduler ({ classes, departments, onDepartmentSelect, selectedDepartme
               {/*  Department */}
               <Grid item md={4}>
                 <LabelScrollCol title="Department">
-                  <PinnedSubheaderList data={departments} onSelect={onDepartmentSelect} selected={selectedDepartment} loading={departmentsLoading}/>
+                  <PinnedSubheaderList data={departments} onSelect={onDepartmentSelect} selected={selectedDepartment}
+                                       loading={departmentsLoading}/>
                 </LabelScrollCol>
               </Grid>
               {/*  Course */}
               <Grid item md={4}>
                 <LabelScrollCol title="Course">
-                  <PinnedSubheaderList data={courses} onSelect={onCourseSelect} selected={selectedCourse.name} loading={coursesLoading}/>
+                  <PinnedSubheaderList data={courses} onSelect={onCourseSelect} selected={selectedCourse.name}
+                                       loading={coursesLoading}/>
                 </LabelScrollCol>
               </Grid>
               {/*  Section */}
@@ -76,7 +78,13 @@ function Scheduler ({ classes, departments, onDepartmentSelect, selectedDepartme
             </Grid>
             {/* Details */}
             <Grid item md={12}>
-              <Details course={selectedCourse} section={selectedSection} professor={professor} />
+              <Details
+                course={selectedCourse}
+                section={selectedSection}
+                professor={professor}
+                courseLoading={coursesLoading}
+                sectionLoading={sectionsLoading}
+                professorLoading={professorLoading}/>
             </Grid>
           </Grid>
           {/*  Schedule */}

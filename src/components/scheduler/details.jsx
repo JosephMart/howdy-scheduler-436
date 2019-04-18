@@ -13,17 +13,19 @@ const styles = theme => ({
   }
 })
 
-function Details ({ classes, section, course, professor }) {
+function Details ({ classes, section, course, professor, professorLoading, courseLoading, sectionLoading }) {
   const courseName = course._id && course._id.split('_').slice(0, 2).join('-');
   const courseData = professor.distributionData && professor.distributionData[courseName];
+  const professorInfo = Object.assign({}, {...professor, name: section.instructor});
 
   const tabs = [
-    {label: 'Course Details', content: <CourseDetails professor={professor} course={course} section={section}/>},
-    {label: 'Course History', content: <History data={courseData} />},
+    {label: 'Course Details', content: <CourseDetails professor={professor} course={course} section={section} loading={professorLoading || courseLoading || sectionLoading}/>},
+    {label: 'Course History', content: <History data={courseData} loading={professorLoading} />},
     {
       label: 'Professor Info',
       content: <ProfessorInfo
-        prof={professor}
+        prof={professorInfo}
+        loading={professorLoading || sectionLoading}
       />
     }
   ];

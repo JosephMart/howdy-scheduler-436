@@ -9,10 +9,14 @@ import {
   HorizontalGridLines,
   LineMarkSeries
 } from 'react-vis'
+import Loading from '../loading'
 
 const styles = theme => ({});
 
-const History = ({data}) => {
+const History = ({data, loading, classes}) => {
+  if (loading) {
+    return <Loading extraClasses={classes.loading} />;
+  }
   if (data === null) {
     return <p>No history found</p>
   }

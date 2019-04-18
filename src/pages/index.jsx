@@ -131,6 +131,7 @@ function Index({ classes }) {
               Object.keys(sections).length === 0
             }
             professor={professor.data}
+            professorLoading={professor.isLoading || (Object.keys(professor).length === 0)}
           />
         </main>
       </div>

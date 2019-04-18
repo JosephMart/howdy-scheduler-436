@@ -1,8 +1,9 @@
 import React from "react";
 import { Typography, withStyles } from "@material-ui/core";
 import withRoot from "../../withRoot";
-import PropTypes, { number } from "prop-types";
+import PropTypes from "prop-types";
 import { numberToTimeAsString } from "../../utils";
+import Loading from '../loading'
 
 const styles = theme => ({
 	root: {
@@ -26,7 +27,10 @@ const styles = theme => ({
 	}
 });
 
-const CourseDetails = ({course, section, classes, professor}) => {
+const CourseDetails = ({course, section, classes, professor, loading}) => {
+	if (loading) {
+		return <Loading extraClasses={classes.loading} />;
+	}
 	let dept;
 	let courseNum;
 	let courseName;
@@ -64,7 +68,7 @@ const CourseDetails = ({course, section, classes, professor}) => {
 							<Typography variant="h6">
 								{dept}-{courseNum}-{section.section}
 							</Typography>
-							<Typography variant="h6">{professor.name}</Typography>
+							<Typography variant="h6">{section.instructor}</Typography>
 						</div>
 						<div>
 							<Typography>CRN: {section.crn}</Typography>
@@ -83,7 +87,7 @@ const CourseDetails = ({course, section, classes, professor}) => {
 				<div>
 					<div>
 						<Typography variant="subtitle1">{courseName}</Typography>
-						<Typography style={{marginBottom: 20}}>This is my description</Typography>
+						<Typography style={{marginBottom: 20}}>{course.description}</Typography>
 					</div>
 					<div>
 						<Typography><strong>Prerequisites:</strong></Typography>

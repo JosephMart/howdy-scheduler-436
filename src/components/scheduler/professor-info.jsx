@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import withRoot from "../../withRoot";
 import { withStyles } from "@material-ui/core";
 import Avatar from '@material-ui/core/Avatar';
+import Loading from '../loading'
 
 const styles = theme => ({
 	root: {
@@ -44,14 +45,27 @@ const styles = theme => ({
 	notFound: {
 		textAlign: "center"
 	}
-})
+});
 
-const ProfessorInfo = ({prof, classes}) => {
+const profInitials = name => {
+	if (name === undefined) {
+		return '';
+	}
+	const list = name.split(' ');
+	return list.length > 1 ? `${list[0][0]}${list[list.length - 1][0]}` : `${list[0][0]}`
+}
+
+const ProfessorInfo = ({prof, classes, loading}) => {
+	if (loading) {
+		return <Loading extraClasses={classes.loading} />;
+	}
 	return (
 		prof !== undefined
 		? (
 			<div className={classes.root}>
-				<Avatar className={classes.professorImage} alt={prof.name} src={prof.image}/>
+				<Avatar className={classes.professorImage} alt={prof.name}>
+					{profInitials(prof.name)}
+				</Avatar>
 				<div className={classes.info}>
 					<div className={classes.nameTitleContainer}>
 						<div className={classes.name}>{prof.name}</div>
