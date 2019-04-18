@@ -7,7 +7,7 @@ import Scheduler from "../components/scheduler";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import NavBar from "../components/navbar";
-import { useDataApi } from "../utils";
+import { DAYS, numberToTime, useDataApi } from '../utils'
 
 const styles = theme => ({
   root: {
@@ -96,16 +96,37 @@ function Index({ classes }) {
     updateSection(Object.values(selectedCourse.sections)[i]);
   };
 
-  const addCourse = course => {
+  const addCourse = sectionsIndex => {
+    const section = Object.values(sections)[sectionsIndex];
+
+    const data = [];
+    for (let i = 0; i < DAYS.length; i++) {
+      let meetings = section.meetings[DAYS[i]];
+      for (let j = 0; j < meetings.length; j++) {
+        const meeting = meetings[j];
+        const [startHour, startMin] = numberToTime(meeting.start);
+        const [endHour, endMin] = numberToTime(meeting.end);
+        data.push({
+          title: `${selectedDepartment}-${selectedCourse._id.split('_')[1]}-${section.section}-${meeting.type}`,
+          id: `${section.name}-${section.section}-${section.instructor}`,
+          startDate: new Date(2018, 5, 25 + i, startHour, startMin),
+          endDate: new Date(2018, 5, 25 + i, endHour, endMin),
+        })
+      }
+    }
     updateSchedules([
-      schedules.slice(0, currentScheduleIndex - 1),
-      [...schedules[currentScheduleIndex], course],
-      schedules.slice(0, currentScheduleIndex + 1),
+      ...schedules.slice(0, currentScheduleIndex - 1),
+      [...schedules[currentScheduleIndex], ...data],
+      ...schedules.slice(currentScheduleIndex + 1),
     ]);
   };
   
-  const removeCourse = () => {
-
+  const removeCourse = id => {
+    updateSchedules([
+      ...schedules.slice(0, currentScheduleIndex - 1),
+      schedules[currentScheduleIndex].filter(s => s.id !== id),
+      ...schedules.slice(currentScheduleIndex + 1),
+    ]);
   };
 
   // console.dir({

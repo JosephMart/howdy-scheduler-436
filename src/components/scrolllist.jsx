@@ -53,7 +53,10 @@ function PinnedSubheaderList({
   onSelect,
   selected,
   loading,
-  addable
+  addable,
+  addedItems,
+  add,
+  remove
 }) {
   const [search, updateSearch] = useState("");
 
@@ -66,10 +69,15 @@ function PinnedSubheaderList({
     updateSearch(value);
   };
 
-  const [added, updateAdded] = useState(false);
-
   if (loading) {
     return <Loading extraClasses={classes.loading} />;
+  }
+
+  const iconClick = (i, removeItem, name) => {
+    if (removeItem) {
+      return remove(name);
+    }
+    add(i);
   }
   return (
     <List component="nav" className={classes.root}>
@@ -106,10 +114,10 @@ function PinnedSubheaderList({
                   size="small"
                   color="primary"
                   aria-label="Add"
-                  onClick={e => updateAdded(!added)}
+                  onClick={e => iconClick(i, addedItems.includes(d), d)}
                   style={{ flexShrink: 0 }}
                 >
-                  {added ? <RemoveIcon /> : <AddIcon />}
+                  {addedItems.includes(d) ? <RemoveIcon /> : <AddIcon />}
                 </Fab>
               </ListItemSecondaryAction>
             )}

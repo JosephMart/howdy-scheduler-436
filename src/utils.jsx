@@ -1,9 +1,16 @@
 import { useEffect, useReducer, useState } from 'react'
 import * as axios from 'axios'
 
-export const numberToTimeAsString = (num) => {
+export const numberToTime = num => {
   const hour = Math.floor(num);
-  const min = Math.floor((num - hour) * 60);
+  const min0 = Math.floor((num - hour) * 60);
+  const min1 = Math.ceil((num - hour) * 60);
+  const min = (min0 % 5 > min1 % 5) ? min1 : min0;
+  return [hour, min];
+}
+
+export const numberToTimeAsString = (num) => {
+  const [hour, min] = numberToTime(num);
   const minStr = `${min}`.padStart(2, "0");
 
   if (hour > 12) {
@@ -99,3 +106,5 @@ export const useDataApi = (initialUrl, initialData) => {
 
   return { ...state, doFetch };
 };
+
+export const DAYS = ["M", "T", "W", "R", "F"];

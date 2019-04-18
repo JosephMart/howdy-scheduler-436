@@ -12,17 +12,9 @@ const styles = theme => ({
     padding: 0
   }
 });
-const appointments = [
-  {
-    title: "Website Re-Design Plan",
-    startDate: new Date(2018, 5, 25, 9, 30),
-    endDate: new Date(2018, 5, 25, 11, 30),
-    id: 0
-  }
-];
 
 function Calendar ({ classes, data }) {
-  console.log(appointments)
+  console.log(data);
   return (
     <Scheduler className={classes.scheduler} data={data}>
       <ViewState currentDate="2018-06-28" />

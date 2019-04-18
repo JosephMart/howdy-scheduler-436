@@ -40,7 +40,7 @@ const styles = theme => ({
   }
 })
 
-function Scheduler ({ classes, departments, onDepartmentSelect, selectedDepartment, courses, onCourseSelect, selectedCourse, sections, selectedSection, onSectionSelect, departmentsLoading, coursesLoading, sectionsLoading, professor, professorLoading, currentScheduleIndex, schedules }) {
+function Scheduler ({ classes, departments, onDepartmentSelect, selectedDepartment, courses, onCourseSelect, selectedCourse, sections, selectedSection, onSectionSelect, departmentsLoading, coursesLoading, sectionsLoading, professor, professorLoading, currentScheduleIndex, schedules, addCourse, removeCourse }) {
   return (
     <div>
       <Paper
@@ -72,7 +72,7 @@ function Scheduler ({ classes, departments, onDepartmentSelect, selectedDepartme
                 <LabelScrollCol title="Section">
                   <PinnedSubheaderList data={sections} onSelect={onSectionSelect} selected={`${selectedSection.name}-${
                     selectedSection.section
-                    }-${selectedSection.instructor}`} loading={sectionsLoading} addable/>
+                    }-${selectedSection.instructor}`} loading={sectionsLoading} addable add={addCourse} remove={removeCourse} addedItems={schedules[currentScheduleIndex].map(s => s.id)}/>
                 </LabelScrollCol>
               </Grid>
             </Grid>

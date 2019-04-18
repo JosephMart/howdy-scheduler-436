@@ -2,7 +2,7 @@ import React from "react";
 import { Typography, withStyles } from "@material-ui/core";
 import withRoot from "../../withRoot";
 import PropTypes from "prop-types";
-import { numberToTimeAsString } from "../../utils";
+import { DAYS, numberToTimeAsString } from '../../utils'
 import Loading from '../loading'
 
 const styles = theme => ({
@@ -56,8 +56,6 @@ const CourseDetails = ({course, section, classes, professor, loading}) => {
 		}
 	}
 
-	const days = ["M", "T", "W", "R", "F"];
-
 	return (
 		course !== undefined && section !== undefined
 		? (
@@ -79,7 +77,7 @@ const CourseDetails = ({course, section, classes, professor, loading}) => {
 						<Typography>{Math.abs(section.credits)} Credit(s)</Typography>
 						<div>
 							{meetings.map((day, i) => {
-								return day.length !== 0 ? <Typography key={i}>{`${days[i]}: ` + day.map(meet => `${numberToTimeAsString(meet.start)} - ${numberToTimeAsString(meet.end)}`).join(", ")}</Typography> : undefined
+								return day.length !== 0 ? <Typography key={i}>{`${DAYS[i]}: ` + day.map(meet => `${numberToTimeAsString(meet.start)} - ${numberToTimeAsString(meet.end)}`).join(", ")}</Typography> : undefined
 							})}
 						</div>
 					</div>
