@@ -73,7 +73,7 @@ const ProfessorInfo = ({prof, classes, loading}) => {
 					</div>
 					<div className={classes.contactInfoContainer}>
 						<div className={classes.contactInfo}>{`Office: ${prof.office || "HRBB 111"}`}</div>
-						<div className={classes.contactInfo}>{`Email: ${prof.email || "first.last@tamu.edu"}`}</div>
+						<div className={classes.contactInfo}>Email: <a href="mailto:first.last@tamu.edu">first.last@tamu.edu</a></div>
 						<div className={classes.contactInfo}>{`Phone: ${prof.phoneNumber || "123-345-6789"}`}</div>
 						<div className={classes.contactInfo}><a href={prof.website || "https://google.com"}>Personal Website</a></div>
 					</div>
