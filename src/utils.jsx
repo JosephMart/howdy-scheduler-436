@@ -84,7 +84,6 @@ export const useDataApi = (initialUrl, initialData) => {
           // Something happened in setting up the request that triggered an Error
           console.error('Error', error.message);
         }
-        console.log(error.config);
         if (!didCancel) {
           dispatch({ type: 'FETCH_FAILURE' });
         }

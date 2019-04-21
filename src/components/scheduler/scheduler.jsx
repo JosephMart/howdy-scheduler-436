@@ -42,7 +42,6 @@ const styles = theme => ({
 
 function Scheduler ({ classes, departments, onDepartmentSelect, selectedDepartment, courses, onCourseSelect, selectedCourse, sections, selectedSection, onSectionSelect, departmentsLoading, coursesLoading, sectionsLoading, professor, professorLoading, currentScheduleIndex, schedules, addCourse, removeCourse, addSchedule, updateScheduleIndex }) {
   const addedCourses = schedules[currentScheduleIndex].map(s => s.id);
-  console.log(schedules, currentScheduleIndex, addedCourses);
 
   return (
     <div>

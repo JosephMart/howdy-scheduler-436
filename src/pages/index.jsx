@@ -145,7 +145,6 @@ function Index({ classes }) {
   //   COURSE: selectedCourse,
   //   SECTION: selectedSection
   // });
-  console.log(schedules, currentScheduleIndex);
   return (
     <div className={classes.root}>
       <div className={classes.nonFooter}>
