@@ -25,8 +25,6 @@ function uniqByKeepLast(a, key) {
 
 const getLabel = d => (`${d.semester}-${d.year[2]}${d.year[3]}`);
 
-
-
 const History = ({data, loading, classes}) => {
   if (loading) {
     return <Loading extraClasses={classes.loading} />;

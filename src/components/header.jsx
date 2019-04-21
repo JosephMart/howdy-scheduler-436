@@ -46,20 +46,6 @@ const Header = ({ classes }) => {
           </Typography>
         </div>
       </div>
-      <Grid
-        container
-        spacing={8}
-        alignItems="flex-end"
-        justify="flex-end"
-        style={{ width: "auto" }}
-      >
-        <Grid item>
-          <Search />
-        </Grid>
-        <Grid item>
-          <TextField id="input-with-icon-grid" label="Search" />
-        </Grid>
-      </Grid>
     </div>
   );
 };

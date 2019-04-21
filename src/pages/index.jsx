@@ -7,7 +7,7 @@ import Scheduler from "../components/scheduler";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import NavBar from "../components/navbar";
-import { DAYS, numberToTime, useDataApi } from '../utils'
+import { DAYS, numberToTime, useDataApi } from "../utils";
 
 const styles = theme => ({
   root: {
@@ -112,17 +112,19 @@ function Index({ classes }) {
         const [startHour, startMin] = numberToTime(meeting.start);
         const [endHour, endMin] = numberToTime(meeting.end);
         data.push({
-          title: `${selectedDepartment}-${selectedCourse._id.split('_')[1]}-${section.section}-${meeting.type}`,
+          title: `${selectedDepartment}-${selectedCourse._id.split("_")[1]}-${
+            section.section
+          }-${meeting.type}`,
           id: `${section.name}-${section.section}-${section.instructor}`,
           startDate: new Date(2018, 5, 25 + i, startHour, startMin),
-          endDate: new Date(2018, 5, 25 + i, endHour, endMin),
-        })
+          endDate: new Date(2018, 5, 25 + i, endHour, endMin)
+        });
       }
     }
     updateSchedules([
       ...schedules.slice(0, currentScheduleIndex),
       [...schedules[currentScheduleIndex], ...data],
-      ...schedules.slice(currentScheduleIndex + 1),
+      ...schedules.slice(currentScheduleIndex + 1)
     ]);
   };
 
@@ -131,7 +133,7 @@ function Index({ classes }) {
     updateSchedules([
       ...schedules.slice(0, currentScheduleIndex),
       schedules[currentScheduleIndex].filter(s => s.id !== id),
-      ...schedules.slice(currentScheduleIndex + 1),
+      ...schedules.slice(currentScheduleIndex + 1)
     ]);
   };
 
@@ -176,7 +178,9 @@ function Index({ classes }) {
               Object.keys(sections).length === 0
             }
             professor={professor.data}
-            professorLoading={professor.isLoading || (Object.keys(professor).length === 0)}
+            professorLoading={
+              professor.isLoading || Object.keys(professor).length === 0
+            }
             schedules={schedules}
             currentScheduleIndex={currentScheduleIndex}
             addCourse={addCourse}

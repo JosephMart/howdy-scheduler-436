@@ -55,7 +55,12 @@ class SimpleTabs extends React.Component {
             indicatorColor="primary"
           >
             {tabs.map(({ id, label, icon, onClick }) => (
-              <Tab key={id || label} label={label} icon={icon} onClick={onClick} />
+              <Tab
+                key={id || label}
+                label={label}
+                icon={icon}
+                onClick={onClick}
+              />
             ))}
           </Tabs>
         </AppBar>
