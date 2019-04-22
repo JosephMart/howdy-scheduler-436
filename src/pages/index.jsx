@@ -142,11 +142,6 @@ function Index({ classes }) {
     updateSchedules([...schedules, []]);
   };
 
-  // console.dir({
-  //   DEPARTMENT: selectedDepartment,
-  //   COURSE: selectedCourse,
-  //   SECTION: selectedSection
-  // });
   return (
     <div className={classes.root}>
       <div className={classes.nonFooter}>
@@ -154,7 +149,7 @@ function Index({ classes }) {
         <NavBar />
         <main className={classes.main}>
           <Typography variant="h2" gutterBottom>
-            Scheduling in A Major
+            Scheduling in <i>A</i> Major
           </Typography>
           <Scheduler
             departments={departments.data}

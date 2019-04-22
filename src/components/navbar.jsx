@@ -20,17 +20,21 @@ const styles = theme => ({
 });
 
 const NavBar = ({ classes }) => {
+  const catalogURL = "https://catalog.tamu.edu/undergraduate/";
   return (
     <div>
       <AppBar position="static" color="primary">
         <Toolbar className={classes.toolbar}>
           <Button href="#" className={classes.navButton}>
-            {/* TODO: remove style from the component*/}
             <Typography color="inherit" style={{ color: "white" }}>
               Dashboard
             </Typography>
           </Button>
-          <Button href="#" className={classes.navButton}>
+          <Button
+            href="#"
+            className={classes.navButton}
+            onClick={e => window.open(catalogURL, "_blank")}
+          >
             <Typography style={{ color: "white" }}>Resources</Typography>
           </Button>
         </Toolbar>
