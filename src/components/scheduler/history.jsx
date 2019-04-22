@@ -13,8 +13,6 @@ import Loading from '../loading'
 
 const styles = theme => ({});
 
-const indexes = ['A', 'B', 'C', 'D', 'F', 'Q'];
-
 function uniqByKeepLast(a, key) {
   return [
     ...new Map(
@@ -36,7 +34,7 @@ const History = ({data, loading, classes}) => {
 
   const {semesters} = data;
 
-  const plotData = uniqByKeepLast(semesters.map((d, x) => ({x: `${d.semester}-${d.year[2]}${d.year[3]}`, y: parseFloat(d.gpa, 10)})), i => i.x).slice(-6);
+  const plotData = uniqByKeepLast(semesters.map((d, x) => ({x: getLabel(d), y: parseFloat(d.gpa, 10)})), i => i.x).slice(-6);
   console.log(plotData)
 
   return (

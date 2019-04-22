@@ -1,9 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import TextField from "@material-ui/core/TextField";
-import Search from "@material-ui/icons/Search";
 import { withStyles } from "@material-ui/core/styles";
 import { default as tamLogoBox } from "../assets/images/TAM-LogoBox.svg";
 import withRoot from "../withRoot";

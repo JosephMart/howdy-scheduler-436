@@ -60,7 +60,7 @@ function Index({ classes }) {
     if (selectedDepartment !== "") {
       courses.doFetch(`/course/department?id=${selectedDepartment}`);
     }
-  }, [selectedDepartment]);
+  }, [selectedDepartment, courses]);
 
   // Updates on course data fetch
   useEffect(() => {
@@ -86,7 +86,7 @@ function Index({ classes }) {
     if (selectedSection.instructorId) {
       professor.doFetch(`/instructor/${selectedSection.instructorId}`);
     }
-  }, [selectedSection]);
+  }, [selectedSection, professor]);
 
   useEffect(() => {
     updateScheduleIndex(schedules.length - 1);
